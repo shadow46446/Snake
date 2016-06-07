@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpawnFood : MonoBehaviour {
+public class Foodspawn : MonoBehaviour {
 	// Food Prefab
 	public GameObject foodPrefab;
 	
@@ -13,8 +13,8 @@ public class SpawnFood : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		// Spawn food every 4 seconds, starting in 3
-		InvokeRepeating("Spawn", 3, 4);
+		// Spawn food every 2 seconds, starting in 3
+		InvokeRepeating("Spawn", 3, 2);
 	}
 	
 	// Spawn one piece of food
@@ -33,4 +33,4 @@ public class SpawnFood : MonoBehaviour {
 		            Quaternion.identity); // default rotation
 	}
 }
-}
+
