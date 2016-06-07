@@ -12,29 +12,30 @@ public class Snake : MonoBehaviour {
 	
 	// Tail Prefab
 	public GameObject tailPrefab;
+	public GameObject snake;
 	// Keep Track of Tail
 	List<Transform> tail = new List<Transform>();
 	
 	// Use this for initialization
 	void Start () {
-		// Move the Snake every 150ms
-		InvokeRepeating("Move", 0.15f, 0.15f);    
+		// Move the Snake every 100ms
+		InvokeRepeating("Move", 0.1f, 0.1f);    
 	}
 	
 	// Update is called once per Frame
 	void Update() {
 		// Move in a new Direction?
 		if (Input.GetKey (KeyCode.RightArrow)) {
-			dir = Vector2.up;
+			dir = Vector2.right;
 			transform.rotation.z.Equals(270f);
 		} else if (Input.GetKey (KeyCode.DownArrow)) {
-			dir = Vector2.right;   
+			dir = -Vector2.up;   
 			transform.rotation.z.Equals(180f);
 		}
 		else if (Input.GetKey(KeyCode.LeftArrow))
-			dir = -Vector2.up; // '-right' means 'left'
+			dir = -Vector2.right; // '-right' means 'left'
 		else if (Input.GetKey(KeyCode.UpArrow))
-			dir = -Vector2.right; 
+			dir = Vector2.up; 
 	}
 	void Move() {
 		// Save current position (gap will be here)
@@ -78,6 +79,8 @@ public class Snake : MonoBehaviour {
 		}
 		// Collided with Tail or Border
 		else {
+			Debug.Log ("Hit tail or border");
+			snake.SetActive(false);
 			// ToDo 'You lose' screen
 		}
 	}
