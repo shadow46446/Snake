@@ -78,8 +78,8 @@ public class Snake : MonoBehaviour {
 			Destroy(coll.gameObject);
 		}
 		// Collided with Tail or Border
-		else {
-			Debug.Log ("Hit tail or border");
+		else if (coll.name.StartsWith("Border")){
+			Debug.Log ("Hit border");
 			snake.SetActive(false);
 			// ToDo 'You lose' screen
 		}
